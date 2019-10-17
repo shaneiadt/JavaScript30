@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Console Tricks!</title>
 </head>
+
 <body>
 
   <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
   <script>
-    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+    const dogs = [{
+      name: 'Snickers',
+      age: 2
+    }, {
+      name: 'hugo',
+      age: 8
+    }];
+
+    const p = document.querySelector('p');
 
     function makeGreen() {
-      const p = document.querySelector('p');
       p.style.color = '#BADA55';
       p.style.fontSize = '50px';
     }
@@ -20,27 +29,55 @@
     // Regular
 
     // Interpolated
+    console.log('hey buddy %s', '💩🦄')
 
     // Styled
+    console.log('%cI am some great texted', 'font-size:20px;background:purple;color:white;')
 
     // warning!
+    console.warn('NNNNooooooooooo')
 
     // Error :|
+    console.error('Damn you ERRORSSS!!')
 
     // Info
+    console.info('Very interestado')
 
     // Testing
+    console.assert(1 === 1, 'That is wrong')
 
     // clearing
 
+    // -> console.clear()
+
     // Viewing DOM Elements
+    console.log(p)
+    console.dir(p)
 
     // Grouping together
+    dogs.forEach(dog => {
+      console.group(`${dog.name}`);
+      console.log(`This is ${dog.name}`)
+      console.log(`She is ${dog.age} years old`)
+      console.log(`Or more like ${dog.age * 7} in dog years!`)
+      console.groupEnd(`${dog.name}`);
+    })
 
     // counting
+    console.count('Shane')
+    console.count('Shane')
+    console.count('Wes')
+    console.count('Shane')
+    console.count('Shane')
+    console.count('Wes')
 
     // timing
-
+    console.time('fetch stuff')
+    setTimeout(() => {
+      console.log('Timeout end!')
+      console.timeEnd('fetch stuff')
+    }, 1000);
   </script>
 </body>
+
 </html>
