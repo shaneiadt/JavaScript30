@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>JS Reference VS Copy</title>
 </head>
+
 <body>
 
   <script>
@@ -13,8 +15,11 @@
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
     // and we want to make a copy of it.
+    const team = Array.from(players);
 
     // You might think we can just do something like this:
+    players[2] = 'BOOM'
+    console.log(players, team)
 
     // however what happens when we update that array?
 
@@ -43,14 +48,30 @@
     };
 
     // and think we make a copy:
+    const cap2 = Object.assign({}, person, {
+      number: 99
+    });
+
+    person.name = 'Sean';
+
+    console.log(person, cap2)
+
+    const spread = {
+      ...cap2
+    };
 
     // how do we take a copy instead?
+
+    cap2.name = 'BAM';
+
+    console.log(spread)
+    console.log(cap2)
 
     // We will hopefully soon see the object ...spread
 
     // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
-
   </script>
 
 </body>
+
 </html>
